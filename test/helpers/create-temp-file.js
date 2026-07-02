@@ -15,7 +15,7 @@ function createTempFile(sizeBytes, extension = '.tmp') {
   const fileName = `filedrop-test-${crypto.randomBytes(4).toString('hex')}${extension}`;
   const filePath = path.join(os.tmpdir(), fileName);
   
-  const buffer = crypto.randomBytes(sizeBytes);
+  const buffer = Buffer.alloc(sizeBytes, 'a');
   fs.writeFileSync(filePath, buffer);
   
   createdFiles.add(filePath);
